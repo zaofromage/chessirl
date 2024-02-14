@@ -4,29 +4,43 @@
     <meta charset="utf-8" />
     <title>Chess IRL</title>
     <style>
+        body {
+            margin-inline: 30%;
+        }
         canvas {
             border: 3px solid;
+        }
+        #controls {
+            display : flex;
+        }
+        #controls img {
+            width : 100px;
+            height: 100px;
+        }
+        #controls * {
+            margin-left: 3px;
+        }
+        a {
+            background-color: white;
+            text-align: center;
+            padding : 3px;
+            border-radius: 5px;
+            border: 2px solid;
         }
     </style>
   </head>
   <body>
     <canvas id="chess" width="600" height="600"></canvas>
-
-    <button onclick="switchColor()">Switch Color</button>
-
-    <button onclick="getPawn()">Get Pawn</button>
-
-    <button onclick="getBishop()">Get Bishop</button>
-
-    <button onclick="getKnight()">Get Knight</button>
-
-    <button onclick="getRook()">Get Rook</button>
-
-    <button onclick="getQueen()">Get Queen</button>
-
-    <button onclick="getKing()">Get King</button>
-
-    <button onclick="board = basePosition.map((arr) => arr.slice())">Base Position</button>
+    <div id="controls">
+        <img src="chess_set/PNGs/No shadow/1x/w_pawn_1x_ns.png" onclick="getPawn()" alt="Get Pawn">
+        <img src="chess_set/PNGs/No shadow/1x/w_bishop_1x_ns.png" onclick="getBishop()" alt="Get Bishop">
+        <img src="chess_set/PNGs/No shadow/1x/w_knight_1x_ns.png" onclick="getKnight()" alt="Get Knight">
+        <img src="chess_set/PNGs/No shadow/1x/w_rook_1x_ns.png" onclick="getRook()" alt="Get Rook">
+        <img src="chess_set/PNGs/No shadow/1x/w_queen_1x_ns.png" onclick="getQueen()" alt="Get Queen">
+        <img src="chess_set/PNGs/No shadow/1x/w_king_1x_ns.png" onclick="getKing()" alt="Get King">
+    </div>
+    <a id="switch" onclick="switchColor()">Switch Color</a>
+    <a onclick="board = basePosition.map((arr) => arr.slice())">Base Position</a>
 
     <script>
         var canvas = document.querySelector("#chess");
@@ -217,6 +231,15 @@
 
         function switchColor(){
             isWhite = !isWhite;
+            var switchButton = document.getElementById("switch").style;
+            if (isWhite) {
+                switchButton.backgroundColor = "white";
+                switchButton.color = "black";
+            }
+            else {
+                switchButton.backgroundColor = "black";
+                switchButton.color = "white";
+            }
         }
 
         function p(type, x, y){
