@@ -26,7 +26,7 @@
 
     <button onclick="getKing()">Get King</button>
 
-    <button onclick="board = basePosition">Base Position</button>
+    <button onclick="board = basePosition.map((arr) => arr.slice())">Base Position</button>
 
     <script>
         var canvas = document.querySelector("#chess");
